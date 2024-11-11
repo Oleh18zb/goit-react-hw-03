@@ -1,28 +1,21 @@
-import React from 'react'
-import { Field, Form, Formik } from 'formik'
-import s from './SearchBox.module.css'
+import React from 'react';
+import s from './SearchBox.module.css';
 
-export const SearchBox = () => {
-
-    const handleSubmit = (values, options) => {
-
-    };
-    const initialValues = {
-        name: '',
-    };
-
+const SearchBox = ({ filter, onFilterChange }) => {
   return (
-    <div>
-        <Formik onSubmit={handleSubmit} initialValues={initialValues}>
-        <Form className={s.Form}>
-            <label className={s.label}>
-                <span className={s.span}>Find contacts by name</span>
-                <Field as='textarea' className={s.input} type="text" name='name'/>
-            </label>
-        </Form>
-        </Formik>
+    <div className={s.SearchBox}>
+      <label className={s.label}>
+        <span className={s.span}>Find contacts by name</span>
+        <input
+          className={s.input}
+          type="text"
+          name="filter"
+          value={filter}
+          onChange={onFilterChange}
+        />
+      </label>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;
